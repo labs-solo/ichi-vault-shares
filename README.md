@@ -19,7 +19,7 @@ The script supports different chains and DEXes, allowing for flexible analysis a
 
 ### Prerequisites
 - Node.js 18+ (You can install it from here)
-- npm or yarn (npm is bundled with Node.js)
+- npm
 
 ### Install Dependencies
 To install the dependencies for the project, run:

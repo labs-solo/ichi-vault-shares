@@ -1,0 +1,9 @@
+build/
+dist/
+node_modules/
+aws-exports.js
+package-lock.json
+awsconfiguration.json
+*.zip
+yarn.lock
+.env
