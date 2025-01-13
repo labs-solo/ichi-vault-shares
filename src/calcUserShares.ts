@@ -10,6 +10,7 @@ dotenv.config();
 // const graphEndpoint = graphUrls[chainId][dex].url;
 const graphEndpoint = "https://api.studio.thegraph.com/query/88584/sonic-v1-swapx/version/latest";
 const VAULT = "0xc263e421Df94bdf57B27120A9B7B8534A6901D95";
+const GAUGE = "0x29d10053BE597E0eBe6BD0434c4f4b750F0f3b69";
 const CHAIN_ID = ChainId.Sonic;
 const DEX = SupportedDex.SwapX;
 const start = 1736640000
@@ -170,6 +171,17 @@ function filterOutDepositGuard(data: GraphTransfer[]): GraphTransfer[] {
   return filteredData;
 }
 
+function filterOutGauge(data: GraphTransfer[]): GraphTransfer[] {
+  const filteredData: GraphTransfer[] = [];
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].to.toLowerCase() !== GAUGE.toLowerCase() &&
+        data[i].from.toLowerCase() !== GAUGE.toLowerCase()) {
+            filteredData.push(data[i]);
+    }
+  }
+  return filteredData;
+}
+
 // ========================================
 // Main function
 
@@ -177,6 +189,7 @@ function filterOutDepositGuard(data: GraphTransfer[]): GraphTransfer[] {
 
   let vaultData = await getVaultData(VAULT, DEX, CHAIN_ID, end);
   vaultData = filterOutDepositGuard(vaultData);
+  vaultData = filterOutGauge(vaultData);
   //console.log(JSON.stringify(vaultData));
 
   if (vaultData.length > 0) {
