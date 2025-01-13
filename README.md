@@ -73,6 +73,11 @@ const DEX = SupportedDex.SwapX; // Change to the desired DEX (e.g., SwapX)
 const VAULT = "0xc263e421Df94bdf57B27120A9B7B8534A6901D95"; // Replace with your vault address
 ```
 
+- **GAUGE**: Provide the address of the gauge attached to the vault
+```typescript
+const GAUGE = "0x29d10053BE597E0eBe6BD0434c4f4b750F0f3b69"; // Replace with the gauge address
+```
+
 - **Start and End Time**: Set the start and end times for the period you're interested in.
 ```typescript
 const start = 1736640000; // Unix timestamp for start time
